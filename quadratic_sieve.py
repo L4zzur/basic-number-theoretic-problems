@@ -22,10 +22,7 @@ def NumberIsSmooth(x, base):
         elif p != -1:
             while x % p == 0:
                 x //= p
-    if x <= max(base):
-        return True
-    else:
-        return False
+    return x == 1
 
 def SmoothSplit(x, base):
     e = []

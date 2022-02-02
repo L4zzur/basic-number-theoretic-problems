@@ -19,10 +19,7 @@ def NumberIsSmooth(x, base):
     for p in base:
         while x % p == 0:
             x //= p
-    if x <= max(base):
-        return True
-    else:
-        return False
+    return x == 1
 
 
 
@@ -53,6 +50,7 @@ def main():
             if pow(a, 2, n) == b and NumberIsSmooth(b, factorbase):
                 a_b = [a, b]
                 numpairs.append(a_b)
+                print(a_b)
             b += 1
             if b > n:
                 a = random.randint(1, n)
