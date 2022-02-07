@@ -29,13 +29,14 @@ def algo4(a, p):
     return r
 
 def main():
-    import sympy
+    import time
     # INPUT
     a = int(input('Введите целое число a: '))
     p = int(input('Введите простое число p: '))
-    
+    start = time.time()
     r = algo4(a, p)
-
+    end = time.time()
+    print(end - start)
     print(f'Ответ: {r}, {-r % p}')
 
 if __name__ ==  "__main__":
