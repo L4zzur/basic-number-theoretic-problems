@@ -10,13 +10,7 @@ def egcd(a, b):
         g, y, x = egcd(b % a, a)
         return (g, x - (b // a) * y, y)
 
-def main():
-    # INPUT
-    n = int(input('Введите число n: '))
-    p = int(input('Введите простое число p: '))
-    q = int(input('Введите простое число q: '))
-    a = int(input('Введите число a: '))
-
+def algo5(n, p, q, a):
     r, s = 0, 0
 
     print('------ Поиск r ------')
@@ -45,10 +39,18 @@ def main():
     x = (r * d * q + s * c * p) % n
     y = (r * d * q - s * c * p) % n
     
-    print(x, y)
+    return x, y
 
+def main():
+    # INPUT
+    n = int(input('Введите число n: '))
+    p = int(input('Введите простое число p: '))
+    q = int(input('Введите простое число q: '))
+    a = int(input('Введите число a: '))
 
+    x, y = algo5(n, p, q, a)
 
+    print(f'Ответ: {x}, {-x % n}, {y}, {-y % n}')
 
 if __name__ ==  "__main__":
     main()
