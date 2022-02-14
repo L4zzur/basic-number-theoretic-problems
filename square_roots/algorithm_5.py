@@ -1,4 +1,3 @@
-from algorithm_1 import algo1
 from algorithm_2 import algo2
 from algorithm_3 import algo3
 from algorithm_4 import algo4
@@ -19,7 +18,7 @@ def algo5(n, p, q, a):
         r = algo2(a, p)
     elif algo3(a, p) != 0:
         print('- 3 алгоритм -')
-        r = algo2(a, p)
+        r = algo3(a, p)
     elif algo4(a, p) != 0:
         print('- 4 алгоритм -')
         r = algo4(a, p)
@@ -29,7 +28,7 @@ def algo5(n, p, q, a):
         s = algo2(a, q)
     elif algo3(a, q) != 0:
         print('- 3 алгоритм -')
-        s = algo2(a, q)
+        s = algo3(a, q)
     elif algo4(a, q) != 0:
         print('- 4 алгоритм -')
         s = algo4(a, q)
