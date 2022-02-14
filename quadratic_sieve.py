@@ -44,12 +44,12 @@ def main():
     import time
     start = time.time()
     # n = int(input('Введите число n: '))
-    n = 24961344
+    n = 24961
     #t = int(input('Введите количество простых чисел для фактор базы: '))
     m = int(math.sqrt(n))
 
     #factorbase = FactorBaseGenerator(t)
-    factorbase = [-1, 2, 3, 5, 7, 11, 13, 17, 19, 23]
+    factorbase = [-1, 2, 3, 5, 13, 23]
     try_count = 0
     # lsx = [12, 2522, 5794, -1, 4, 156, 102, -6, 2, 9124, 34]
     while True:

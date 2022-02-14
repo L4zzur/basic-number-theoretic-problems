@@ -13,8 +13,8 @@ def Gauss(p):
     import sympy
     i = 1
     alpha = random.randint(2, p - 1)
+    t = len(ord(alpha, p))
     while True:
-        t = len(ord(alpha, p))
         if t == p - 1:
             return alpha
         betta = random.randint(2, p - 1)
@@ -29,6 +29,7 @@ def Gauss(p):
             d = pow(list(f.keys())[0], list(f.values())[0])
             e = de // d 
             alpha = pow(alpha, t // d) * pow(betta, s // e) % p
+            t = math.lcm(t, s)
 
 def main():
     print(Gauss(47))
