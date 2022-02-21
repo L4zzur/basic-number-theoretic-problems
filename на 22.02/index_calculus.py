@@ -1,6 +1,6 @@
 def FactorBaseGenerator(t):
     import sympy
-    factorBase = [-1]
+    factorBase = []
     amount = 1
     num = 2
     while True:
@@ -53,58 +53,63 @@ def main():
     #t = int(input('Введите количество простых чисел для фактор базы: '))
     #factorbase = FactorBaseGenerator(t)
 
-    n = 37
+    n = 1117
     g = 2
-    h = 13
-    c = 0
+    h = 1058
+    c = 5
     factorbase = [2, 3, 5]
     t = len(factorbase)
     comparisons = {}
     #ks = [1, 13, 25]
-    i = 0
     while True:
-        k = random.randint(0, n - 1)
-        #print(k)
-        #k = ks[i]
-        print(pow(g, k, n))
-        if NumberIsSmooth(pow(g, k, n), factorbase):
-            #print(SmoothSplit(pow(g, k, n), factorbase))
-            comparisons[k] = SmoothSplit(pow(g, k, n), factorbase)
+        i = 0
+        while True:
+            k = random.randint(0, n - 1)
+            #print(k)
+            #k = ks[i]
+            #print(pow(g, k, n))
+            if NumberIsSmooth(pow(g, k, n), factorbase):
+                #print(SmoothSplit(pow(g, k, n), factorbase))
+                comparisons[k] = SmoothSplit(pow(g, k, n), factorbase)
+            
+            if len(comparisons) >= t + c:
+                break
+            i += 1
+        #print(comparisons)
+
+        solutions = []
+        a = numpy.zeros(shape=(t + c, t))
+        b = numpy.zeros(shape=(t + c, 1))
+        i = 0
+        for key in comparisons:
+            a[i] = comparisons[key]
+            b[i] = key
+            i += 1
         
-        if len(comparisons) >= t + c:
-            break
-        i += 1
-    #print(comparisons)
+        res = lstsq(a, b)[0]
+        #print(lstsq(a, b)[0])
+        for i in range(3):
+            solutions.append(int_r(float(res[i])) % (n - 1))
+        
+        #print(solutions)
+        comparisons = {}
+        while True:
+            k = random.randint(0, n - 1)
+            if NumberIsSmooth(h * pow(g, k, n) % (n), factorbase):
+                #print(h * pow(g, k, n) % (n))
+                hg = SmoothSplit(h * pow(g, k, n) % (n), factorbase)
+                break
+        x = 0
+        for i in range(len(hg)):
+            x += hg[i] * solutions[i] % (n - 1)
 
-    solutions = []
-    a = numpy.zeros(shape=(t + c, t))
-    b = numpy.zeros(shape=(t + c, 1))
-    i = 0
-    for key in comparisons:
-        a[i] = comparisons[key]
-        b[i] = key
-        i += 1
-    
-    res = lstsq(a, b)[0]
-    print(lstsq(a, b)[0])
-    for i in range(3):
-        solutions.append(int_r(float(res[i])) % (n - 1))
-    
-    print(solutions)
-    comparisons = {}
-    while True:
-        k = random.randint(0, n - 1)
-        print(h * pow(g, k, n) % (n))
-        if NumberIsSmooth(h * pow(g, k, n) % (n), factorbase):
-            print(h * pow(g, k, n) % (n))
-            hg = SmoothSplit(h * pow(g, k, n) % (n), factorbase)
-            break
-    x = 0
-    for i in range(len(hg)):
-        x += hg[i] * solutions[i] % (n - 1)
+        x = (x - k) % (n - 1)
 
-    print((x - k) % (n - 1))
-    return (x - k) % (n - 1)
+        if pow(g, x, n) == h:
+            print(x)
+            end = time.time()
+            print(end - start)
+            return x
 
 
 if __name__ ==  "__main__":
