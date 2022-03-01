@@ -20,7 +20,7 @@ def bsgs(g, h, n):
         
 
 def main():
-    answer = bsgs(2, 1058, 1117)
+    answer = bsgs(11, 586856, 2367671)
     print(answer)
     
 if __name__ ==  "__main__":

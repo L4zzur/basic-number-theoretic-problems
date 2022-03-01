@@ -1,6 +1,11 @@
+from algorithm_1 import algo1
 from algorithm_2 import algo2
 from algorithm_3 import algo3
 from algorithm_4 import algo4
+
+def legenre_symbol(a, p):
+    ls = pow(a, (p - 1) // 2, p)
+    return -1 if ls == p - 1 else ls
 
 def egcd(a, b):
     if a == 0:
@@ -11,6 +16,9 @@ def egcd(a, b):
 
 def algo5(n, p, q, a):
     r, s = 0, 0
+
+    if p % 2 == 0 or legenre_symbol(a, p) == -1 or q % 2 == 0 or legenre_symbol(a, q) == -1:
+        return False
 
     print('------ Поиск r ------')
     if algo2(a, p) != 0:
@@ -42,14 +50,20 @@ def algo5(n, p, q, a):
 
 def main():
     # INPUT
-    n = int(input('Введите число n: '))
-    p = int(input('Введите простое число p: '))
-    q = int(input('Введите простое число q: '))
-    a = int(input('Введите число a: '))
+    #n = int(input('Введите число n: '))
+    #p = int(input('Введите простое число p: '))
+    #q = int(input('Введите простое число q: '))
+    #a = int(input('Введите число a: '))
+    n = 2929
+    p = 29
+    q = 101
+    a = 4
 
-    x, y = algo5(n, p, q, a)
-
-    print(f'Ответ: {x}, {-x % n}, {y}, {-y % n}')
+    res = algo5(n, p, q, a)
+    if not res:
+        print('Error')
+    else:
+        print(f'Ответ: {res[0]}, {-res[0] % n}, {res[1]}, {-res[1] % n}')
 
 if __name__ ==  "__main__":
     main()

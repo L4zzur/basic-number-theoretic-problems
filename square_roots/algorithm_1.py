@@ -32,7 +32,6 @@ def algo1(a, p):
     b = random.randint(1, p - 1)
     while legenre_symbol(b ,p) != -1:
         b = random.randint(1, p - 1)
-    b = 38434
     # STEP 3
     s = 0
     t = p - 1
@@ -55,8 +54,10 @@ def algo1(a, p):
 
 def main():
     # INPUT
-    a = int(input('Введите целое число a: '))
-    p = int(input('Введите простое число p: '))
+    #a = int(input('Введите целое число a: '))
+    #p = int(input('Введите простое число p: '))
+    a = 245649
+    p = 156808513
     r = algo1(a, p)
     print(f'Ответ: {r}, {-r % p}')
     

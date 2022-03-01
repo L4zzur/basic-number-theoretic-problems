@@ -10,6 +10,9 @@ def algo4(a, p):
     if not sympy.isprime(p):
         raise Exception(f'Введённое число {p} не является простым.')
 
+    if p % 2 == 0 or legenre_symbol(a, p) == -1:
+        return False
+    
     b = random.randint(0, p)
     while legenre_symbol((pow(b, 2, p) - 4 * a) % p, p) != -1:
         b = random.randint(0, p)

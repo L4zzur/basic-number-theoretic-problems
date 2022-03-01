@@ -37,12 +37,12 @@ def SmoothSplit(x, base):
                 k += 1
         e.append(k)
     return e
+
 def int_r(num):
     num = int(num + (0.5 if num > 0 else -0.5))
     return num
 
 def main():
-    import math
     import random
     import time
     import numpy
@@ -52,11 +52,11 @@ def main():
     #n = int(input('Введите число n: '))
     #t = int(input('Введите количество простых чисел для фактор базы: '))
     #factorbase = FactorBaseGenerator(t)
-
-    n = 1117
-    g = 2
-    h = 1058
-    c = 5
+    # 5, 2943, 11831, 23663
+    n = 23663
+    g = 5
+    h = 2943
+    c = 1
     factorbase = [2, 3, 5]
     t = len(factorbase)
     comparisons = {}
@@ -66,12 +66,10 @@ def main():
         while True:
             k = random.randint(0, n - 1)
             #print(k)
-            #k = ks[i]
             #print(pow(g, k, n))
             if NumberIsSmooth(pow(g, k, n), factorbase):
                 #print(SmoothSplit(pow(g, k, n), factorbase))
                 comparisons[k] = SmoothSplit(pow(g, k, n), factorbase)
-            
             if len(comparisons) >= t + c:
                 break
             i += 1
@@ -88,9 +86,7 @@ def main():
         
         res = lstsq(a, b)[0]
         #print(lstsq(a, b)[0])
-        for i in range(3):
-            solutions.append(int_r(float(res[i])) % (n - 1))
-        
+        solutions = list(map(lambda x: int(x % (n - 1)), res))
         #print(solutions)
         comparisons = {}
         while True:
@@ -110,7 +106,6 @@ def main():
             end = time.time()
             print(end - start)
             return x
-
 
 if __name__ ==  "__main__":
     main()

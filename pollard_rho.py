@@ -40,17 +40,17 @@ def rho(alpha, betta, n, p):
 def main():
     import sympy
     # alpha betta n p
-    answer = rho(89, 799, 101, 809)
+    answer = rho(5, 2943, 11831, 23663)
     print(answer)
     # p betta alpha
-    print(sympy.discrete_log(809, 799, 89))
+    #print(sympy.discrete_log(809, 799, 89))
 
-    answer = rho(2, 5, 28, 29)
-    print(sympy.discrete_log(29, 5, 2))
-    print(answer)
+    #answer = rho(2, 5, 28, 29)
+    #print(sympy.discrete_log(29, 5, 2))
+    #print(answer)
 
-    answer = rho(2, 228, 191, 383)
-    print(answer)
-    print(sympy.discrete_log(383, 228, 2))
+    #answer = rho(2, 228, 191, 383)
+    #print(answer)
+    #print(sympy.discrete_log(383, 228, 2))
 if __name__ ==  "__main__":
     main()
